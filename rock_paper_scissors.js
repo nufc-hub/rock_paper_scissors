@@ -37,12 +37,14 @@ function game() {// this plays a five round game of rock, paper, scissors
     let computerScore = 0;//computerScore starts at 0
 
     for (let i = 1; i <= 5; i++) { //this gives us five rounds. It is set to 1 so that roundNumber(variable) always starts at round 1.
-        let playerSelection = prompt("Rock, paper or scissors?").toLowerCase();//this is displayed five times, if the user inputs a word from the 'choices' array
+        let playerSelection = prompt("Rock, paper or scissors?").toLowerCase();/*this is displayed five times, if the user inputs 
+                                                                               a word from the 'choices' array*/
         let computerSelection = getComputerChoice();
         let roundNumber = `Round ${i}`;//this shows what round we just played
         console.log(roundNumber)
         
-        let round;//this incorporates a function that plays one round of the game, due to the while loop, if an invalid answer is input, you cant proceed to the next round until a valid input is entered
+        let round;/*this incorporates a function that plays one round of the game, due to the while loop, if an invalid answer is input, 
+                    you cant proceed to the next round until a valid input is entered*/
         while (true) {
             round = playRound(playerSelection, computerSelection);
             if (round.message != "Please enter rock, paper or scissors.") {
