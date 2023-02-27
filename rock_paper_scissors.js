@@ -1,34 +1,9 @@
-let rock = 'rock';
-let paper = 'paper';
-let scissors = 'scissors';
+const choices = ["rock", "paper", "scissors"]; //array with three choices
 
-function getComputerChoice() {
-   
-    //create three variables//
-   //rock, paper, scissors
-    
-    const randomIndex = Math.floor(Math.random() * 3 ) + 1;
-    //getComputerChoice function//
-    //this should pick one of these variables then return one of these three variables randomly//
-    //function getComputerChoice(var1, var2, var3) {pick this one or this one or this one}//
-    let computerOutput;
-
-    switch (randomIndex) {
-        case 1:
-            computerOutput = rock;
-            break;
-        case 2:
-            computerOutput = paper;
-            break;
-        case 3:
-            computerOutput = scissors;
-            break;
-    }
-    return computerOutput;
+function getComputerChoice() { //picks one of the choices in the array at random
+    const randomIndex = Math.floor(Math.random() * choices.length );
+    return choices[randomIndex]; 
 }
-
-
-
 
 
 function playRound (playerSelection, computerSelection) {
@@ -36,103 +11,64 @@ function playRound (playerSelection, computerSelection) {
     let playerScore = 0;
     let computerScore = 0;
     
-   if (playerSelection === rock && computerSelection === scissors) {
-    roundResult = "Rock beats scissors, you win!";
+   if (!choices.includes(playerSelection)) {
+    roundResult = "Please enter rock, paper or scissors."
+   } else if (playerSelection === computerSelection) {
+    roundResult = `It's a draw, both players chose ${playerSelection}.`
+   } else if (
+   (playerSelection === 'rock' && computerSelection === 'scissors') ||
+   (playerSelection === 'paper' && computerSelection === 'rock') ||
+   (playerSelection === 'scissors' && computerSelection === 'paper')
+   ) {
+    roundResult = `You win. ${playerSelection} beats ${computerSelection}`;
     playerScore = 1;
-   } else if (playerSelection === paper && computerSelection === rock) {
-    roundResult = "Paper beats rock, you win!";
-    playerScore = 1;
-   } else if (playerSelection === scissors && computerSelection === paper) {
-    roundResult = "Scissors beats paper, you win!";
-    playerScore = 1;
-   } else if (playerSelection === rock && computerSelection === rock) {
-    roundResult = "Rock and rock, you draw.";
-    playerScore = 0;
-    computerScore = 0;
-   } else if (playerSelection === paper && computerSelection === paper) {
-    roundResult = "Paper and paper, you draw.";
-    playerScore = 0;
-    computerScore = 0;
-   } else if (playerSelection === scissors && computerSelection === scissors) {
-    roundResult = "Scissors and scissors, you draw.";
-    playerScore = 0;
-    computerScore = 0;
-   } else if (playerSelection === rock && computerSelection === paper) {
-    roundResult = "You lose, paper beats rock";
-    computerScore = 1;
-   } else if (playerSelection === paper && computerSelection === scissors) {
-    roundResult = "You lose, scissors beats paper.";
-    computerScore = 1;
-   } else if (playerSelection === scissors && computerSelection === rock) {
-    roundResult = "You lose, rock beats scissors.";
-    computerScore = 1;
    } else {
-    return "Error, something went wrong."
-   }
-
-   if (playerScore === 1){
-    return {
-        message: roundResult + " Your score is now " + playerScore + 
-        " and the computer score is now " + computerScore + ".",
-        playerScore: playerScore,
-        computerScore: computerScore
-        
-    };
-   } else if (computerScore === 1){
-    return {
-        message: roundResult + " Your score is now " + playerScore + 
-        " and the computer score is now " + computerScore + ".",
-        playerScore: playerScore,
-        computerScore: computerScore
-        
-    };
-   } else if (playerScore === computerScore) {
-    return {
-        message: roundResult + " Your score is still " + playerScore + 
-        " and the computer score is still " + computerScore + ".",
-        playerScore: playerScore,
-        computerScore: computerScore
-
-    };
-   } else {
-    return {
-        message:"Error."
-    }
+    roundResult = `You lose. ${computerSelection} beats ${ playerSelection}`;
+    computerScore = 1;
    }
    
-}
+   return {message: roundResult, playerScore, computerScore};//This will always return an object even if an invalid input is provided
+
+   }
+
 
 
 
 
 
 function game() {
-    let playerScore = 0;
-    let computerScore = 0;
+    let playerScore = 0;// playerScore starts at 0
+    let computerScore = 0;//computerScore starts at 0
 
-    for (let i = 1; i < 6; i++) {
-        let playerSelection = prompt("Rock, paper or scissors?").toLowerCase();
+    for (let i = 1; i <= 5; i++) { //this give us five rounds. It is set to 1 so that roundNumber(variable) always starts at round 1.
+        let playerSelection = prompt("Rock, paper or scissors?").toLowerCase();//this is displayed five times
         let computerSelection = getComputerChoice();
-        let roundNumber = `Round ${i}`;
+        let roundNumber = `Round ${i}`;//this shows what round we just played
         console.log(roundNumber)
         
-        let round = playRound(playerSelection, computerSelection);
+        let round;//this incorporates a function that plays one round of the game, due to the while loop, if an invalid answer is input, you cant proceed to the next round until a valid input is entered
+        while (true) {
+            round = playRound(playerSelection, computerSelection);
+            if (round.message != "Please enter rock, paper or scissors.") {
+                break;
+            }
+            console.log("Please try again.");
+            playerSelection = prompt("Rock, paper or scissors?").toLowerCase();
+        } 
         console.log(round.message);
 
-        playerScore += round.playerScore;
-        computerScore += round.computerScore;
-        console.log(`Player score: ${playerScore}, Computer score: ${computerScore}`);
-
-
+        playerScore += round.playerScore; //this returns the score to playerScore after each round
+        computerScore += round.computerScore; ////this returns the score to playerScore after each round
+        console.log(`Player score: ${playerScore}, Computer score: ${computerScore}`);//this shows the score at the end of each round
     }
     
-
+//these are the conditions that take place at the end of the fifth round
     if (playerScore > computerScore) {
-        return "You won the game.";
+        return "You win the game.";
     } else if (playerScore === computerScore) {
-        return "You drew the game.";
+        return "You draw the game.";
     } else {
-        return "You lost the game.";
+        return "You lose the game.";
     }
 }
 
