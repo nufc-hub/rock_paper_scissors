@@ -6,7 +6,7 @@ function getComputerChoice() { //picks one of the choices in the array at random
 }
 
 
-function playRound (playerSelection, computerSelection) {
+function playRound (playerSelection, computerSelection) {//this plays one round of the game
     let roundResult;
     let playerScore = 0;
     let computerScore = 0;
@@ -32,16 +32,12 @@ function playRound (playerSelection, computerSelection) {
    }
 
 
-
-
-
-
-function game() {
+function game() {// this plays a five round game of rock, paper, scissors
     let playerScore = 0;// playerScore starts at 0
     let computerScore = 0;//computerScore starts at 0
 
-    for (let i = 1; i <= 5; i++) { //this give us five rounds. It is set to 1 so that roundNumber(variable) always starts at round 1.
-        let playerSelection = prompt("Rock, paper or scissors?").toLowerCase();//this is displayed five times
+    for (let i = 1; i <= 5; i++) { //this gives us five rounds. It is set to 1 so that roundNumber(variable) always starts at round 1.
+        let playerSelection = prompt("Rock, paper or scissors?").toLowerCase();//this is displayed five times, if the user inputs a word from the 'choices' array
         let computerSelection = getComputerChoice();
         let roundNumber = `Round ${i}`;//this shows what round we just played
         console.log(roundNumber)
@@ -71,6 +67,5 @@ function game() {
         return "You lose the game.";
     }
 }
-
 
 console.log(game())
