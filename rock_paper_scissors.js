@@ -35,6 +35,7 @@ function playRound (playerSelection, computerSelection) {
     let roundResult;
     let playerScore = 0;
     let computerScore = 0;
+    
    if (playerSelection === rock && computerSelection === scissors) {
     roundResult = "Rock beats scissors, you win!";
     playerScore = 1;
@@ -43,13 +44,19 @@ function playRound (playerSelection, computerSelection) {
     playerScore = 1;
    } else if (playerSelection === scissors && computerSelection === paper) {
     roundResult = "Scissors beats paper, you win!";
-    playerScore = 1
+    playerScore = 1;
    } else if (playerSelection === rock && computerSelection === rock) {
-    return "Rock and rock, you draw.";
+    roundResult = "Rock and rock, you draw.";
+    playerScore = 0;
+    computerScore = 0;
    } else if (playerSelection === paper && computerSelection === paper) {
-    return "Paper and Paper, you draw.";
+    roundResult = "Paper and paper, you draw.";
+    playerScore = 0;
+    computerScore = 0;
    } else if (playerSelection === scissors && computerSelection === scissors) {
-    return "Scissors and scissors, you draw.";
+    roundResult = "Scissors and scissors, you draw.";
+    playerScore = 0;
+    computerScore = 0;
    } else if (playerSelection === rock && computerSelection === paper) {
     roundResult = "You lose, paper beats rock";
     computerScore = 1;
@@ -65,31 +72,69 @@ function playRound (playerSelection, computerSelection) {
 
    if (playerScore === 1){
     return {
-        playerScore: playerScore,
-        computerScore: computerScore,
         message: roundResult + " Your score is now " + playerScore + 
-        " and the computer score is now " + computerScore + "."
+        " and the computer score is now " + computerScore + ".",
+        playerScore: playerScore,
+        computerScore: computerScore
+        
     };
    } else if (computerScore === 1){
     return {
-        playerScore: playerScore,
-        computerScore: computerScore,
         message: roundResult + " Your score is now " + playerScore + 
-        " and the computer score is now " + computerScore + "."
+        " and the computer score is now " + computerScore + ".",
+        playerScore: playerScore,
+        computerScore: computerScore
+        
+    };
+   } else if (playerScore === computerScore) {
+    return {
+        message: roundResult + " Your score is still " + playerScore + 
+        " and the computer score is still " + computerScore + ".",
+        playerScore: playerScore,
+        computerScore: computerScore
+
     };
    } else {
     return {
-        playerScore: playerScore,
-        computerScore: computerScore,
-        message: roundResult + " Your score is still " + playerScore + 
-        " and the computer score is still " + computerScore + "."
-    };
+        message:"Error."
+    }
    }
    
 }
 
-let playerSelection = prompt("Rock, paper or scissors?").toLowerCase();
-let computerSelection = getComputerChoice();
 
 
-console.log(playRound(playerSelection, computerSelection))
+
+
+function game() {
+    let playerScore = 0;
+    let computerScore = 0;
+
+    for (let i = 1; i < 6; i++) {
+        let playerSelection = prompt("Rock, paper or scissors?").toLowerCase();
+        let computerSelection = getComputerChoice();
+        let roundNumber = `Round ${i}`;
+        console.log(roundNumber)
+        
+        let round = playRound(playerSelection, computerSelection);
+        console.log(round.message);
+
+        playerScore += round.playerScore;
+        computerScore += round.computerScore;
+        console.log(`Player score: ${playerScore}, Computer score: ${computerScore}`);
+
+
+    }
+    
+
+    if (playerScore > computerScore) {
+        return "You won the game.";
+    } else if (playerScore === computerScore) {
+        return "You drew the game.";
+    } else {
+        return "You lost the game.";
+    }
+}
+
+
+console.log(game())
