@@ -1,3 +1,16 @@
+let i = 0;
+let openingMsg = 'Rock, Paper, Scissors!';
+let speed = 50
+
+function flashOpeningMsg(){// This function flashes 'rock, paper, scissors' across the h1 element
+    const onpeningMSgElement = document.getElementById('opening-msg');//this flashes an opening message 
+    if(i < openingMsg.length) {
+        onpeningMSgElement.innerHTML += openingMsg.charAt(i);
+        i++;
+        setTimeout(flashOpeningMsg,speed);
+    }
+}
+
 const choices = ["rock", "paper", "scissors"]; //array with three choices
 let playerScore = 0;
 let computerScore = 0;
@@ -69,7 +82,15 @@ function playGame() {// this is to play a full game of RPS
         computerScoreBox.textContent = computerScore;
         resultBox.textContent = 'Let\'s play!'
         buttons.forEach(button => button.disabled = false);//this enables the RPS buttons
+        
+        i = 0;
+        
+        const onpeningMSgElement = document.getElementById('opening-msg');
+        onpeningMSgElement.textContent = "";
+        setTimeout(flashOpeningMsg, speed);
     });
 }
 
 playGame();
+
+window.addEventListener('load', flashOpeningMsg);

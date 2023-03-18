@@ -3,18 +3,23 @@
     <head>
         <meta charset="UTF-8">
         <title>Rock, Paper, Scissors</title>
+        <link rel='stylesheet' href="style.css">
     </head>
     <body>
-        <button class = 'btn'>Rock</button>
-        <button class = 'btn'>Paper</button>
-        <button class = 'btn'>Scissors</button>
-        <div>
-            <div class = playerScore id = player-score>0</div>
-            <div class = computerScore id = computer-score>0</div>
-            <div class = 'result'></div>
+        <div class = wholePageContainer>
+            <div class = topContainer>
+                <h1 clas="flashMsg" id=opening-msg></h1>
+            </div>
+            <button class='btn'>Rock</button>
+            <button class='btn'>Paper</button>
+            <button class='btn'>Scissors</button>
+            <div>
+                <div class=playerScore id = player-score>0</div>
+                <div class=computerScore id = computer-score>0</div>
+                <div class='result'></div>
+            </div>
+            <button class='restartGame'>Restart game</button>
         </div>
-        <button class = 'restartGame'>Restart game</button>
-
         <script src="rock_paper_scissors.js"></script>
     </body>
 </html>
