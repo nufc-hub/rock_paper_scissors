@@ -1,0 +1,82 @@
+body {
+    display: flex;
+    flex-direction: column;
+    font-family: 'roboto'; 
+    background-image: url('images/background.jpg');
+    padding: 0;
+    margin: 0;  
+}
+
+.flashMsgContainer {
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.flashMsg {
+    color: white;
+    font-size: 50px;
+}
+
+.scoreContainer {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.playerScore {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+.computerScore {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+.scoreNumberBox {
+    font-size: 80px;
+}
+
+.choicesContainer {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+}
+
+.btn{
+    margin: 0px 30px;
+    font-size: 20px;
+    padding: 15px 15px
+}
+
+.resultContainer {
+    display: flex;
+    justify-content: center;
+    color: white;
+    font-size: 30px;
+}
+
+.restartBtnContainer {
+    display: flex;
+    justify-content: center;
+}
+
+.restartGame {
+    margin: 0px 30px;
+    margin-top: 15px;
+    font-size: 20px;
+    padding: 15px 15px
+}
+
+.beakContainer {
+    display: flex;
+    justify-content: center;
+}
