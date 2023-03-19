@@ -1,34 +1,28 @@
 body {
     display: flex;
-    flex-direction: column;
-    font-family: 'roboto'; 
+    flex-direction: column; 
     background-image: url('images/background.jpg');
-    padding: 0;
     margin: 0;  
-    font-family: 'Roboto', sans-serif;
     font-family: 'Roboto Mono', monospace;
 }
 
-.flashMsgContainer {
-    height: 100px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
+.flash-msg-container {
+  text-align: center;
 }
 
-.flashMsg {
+
+.flash-msg {
     color: white;
     font-size: 50px;
 }
 
-.scoreContainer {
+.score-container {
     display: flex;
     justify-content: space-around;
     align-items: center;
 }
 
-.playerScore {
+.player-score {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -36,7 +30,7 @@ body {
     color: white;
 }
 
-.computerScore {
+.computer-score {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -44,11 +38,11 @@ body {
     color: white;
 }
 
-.scoreNumberBox {
+.score-number-box {
     font-size: 80px;
 }
 
-.choicesContainer {
+.choices-container {
     display: flex;
     justify-content: center;
     padding: 20px;
@@ -62,39 +56,51 @@ body {
 
 }
 
-.resultContainer {
+.result-container {
     display: flex;
     justify-content: center;
+    align-items: center;
+    text-align: center;
     color: white;
     font-size: 30px;
     margin-top: 10px;
-    text-align: center;
+    height:120px
 }
 
-.restartBtnContainer {
+.restart-btn-container {
     display: flex;
     justify-content: center;
 }
 
-.restartBtn {
+.restart-btn {
     margin-top: 15px;
     font-size: 20px;
     padding: 15px 15px;
 }
 
-.beakContainer {
+.img-container {
     display: flex;
     justify-content: center;
 }
 
-@media (max-width: 768px) {
-    .flashMsg {
+.desktop-image {
+    display: block;
+}
+
+@media (max-width: 767px) {
+    .flash-msg {
         font-size: 18px;
     }
 }
 
-@media (max-width: 768px) {
-    .flashMsgContainer {
+@media (max-width: 767px) {
+    .flash-msg-container {
         height: 20px;
+    }
+}
+
+@media only screen and (max-width: 767px) {
+    .desktop-image {
+        display: none
     }
 }
