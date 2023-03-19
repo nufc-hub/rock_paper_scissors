@@ -31,10 +31,10 @@ function playRound (playerSelection, computerSelection) {//this plays one round 
         (playerSelection === 'paper' && computerSelection === 'rock') ||
         (playerSelection === 'scissors' && computerSelection === 'paper')
     ) {
-        roundResult = `You win. ${playerSelection} beats ${computerSelection}`;
+        roundResult = `You win, ${playerSelection} beats ${computerSelection}`;
         playerScore += 1;
     } else {
-        roundResult = `You lose. ${computerSelection} beats ${ playerSelection}`;
+        roundResult = `You lose, ${computerSelection} beats ${ playerSelection}`;
         computerScore += 1;
     }
    
