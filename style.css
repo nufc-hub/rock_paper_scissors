@@ -5,6 +5,8 @@ body {
     background-image: url('images/background.jpg');
     padding: 0;
     margin: 0;  
+    font-family: 'Roboto', sans-serif;
+    font-family: 'Roboto Mono', monospace;
 }
 
 .flashMsgContainer {
@@ -73,14 +75,25 @@ body {
     justify-content: center;
 }
 
-.restartGame {
+.restartBtn {
     margin-top: 15px;
     font-size: 20px;
-    padding-top: 15px;
+    padding: 15px 15px;
 }
 
 .beakContainer {
     display: flex;
     justify-content: center;
-    margin-top: -50px;
+}
+
+@media (max-width: 768px) {
+    .flashMsg {
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 768px) {
+    .flashMsgContainer {
+        height: 20px;
+    }
 }
