@@ -74,7 +74,7 @@ function playGame() {// this is to play a full game of RPS
         })
     });
 
-    const restartGame = document.querySelector('.restartBtn');
+    const restartGame = document.querySelector('.restart-btn');
     restartGame.addEventListener('click', function(){//this restarts the game
         playerScore = 0;
         computerScore = 0;
